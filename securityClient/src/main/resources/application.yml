@@ -1,0 +1,21 @@
+
+server:
+  port: 9098 #配置端口号
+  tomcat:
+    uri-encoding: UTF-8  
+
+spring:
+ application:
+      name: securityServer #指定微服务的名称后续在调用的时候只需要使用该名称就可以进行服务的访问
+ cloud:
+    loadbalancer:
+      retry:
+        enabled: true #该参数用来开启重试机制，默认是关闭
+hystrix:
+  metrics:
+    polling-interval-ms: 3000 #后续轮询度量之间的间隔。默认为2000 ms。
+    enabled: true #启用 断路器（避免该应用在崩溃的情况下，雪崩整体应用） 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://http://47.105.58.164:9096/eureka/ #eureka服务注册地址 服务注册中心的配置内容，指定服务注册中心的Url
